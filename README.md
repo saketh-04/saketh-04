@@ -1,392 +1,322 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Code, Rocket, Cloud, Zap, Terminal, Github, Linkedin, Mail, Star, GitBranch, Users, Award } from 'lucide-react';
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,16,20,24&height=200&section=header&text=SAKETH%20PAGGILLA&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=Full%20Stack%20Developer%20|%20Cloud%20Architect%20|%20AI%20Innovator&descSize=18&descAlignY=55" width="100%"/>
 
-const GitHubProfile = () => {
-  const [score, setScore] = useState(0);
-  const [gameActive, setGameActive] = useState(false);
-  const [snake, setSnake] = useState([[10, 10]]);
-  const [food, setFood] = useState([15, 15]);
-  const [direction, setDirection] = useState([0, 1]);
-  const [particles, setParticles] = useState([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const gameRef = useRef(null);
+<div align="center">
 
-  // Particle system for background
-  useEffect(() => {
-    const newParticles = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      speedX: (Math.random() - 0.5) * 0.5,
-      speedY: (Math.random() - 0.5) * 0.5
-    }));
-    setParticles(newParticles);
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=600&lines=Building+Scalable+Systems+🚀;Cloud+%26+AI+Engineering+☁️;Crafting+Digital+Experiences+🎨;Open+Source+Contributor+💻" alt="Typing Animation" />
+  
+  <br/>
+  
+  <img src="https://komarev.com/ghpvc/?username=saketh-04&label=Profile%20Views&color=6366F1&style=for-the-badge" alt="Profile views" />
+  <img src="https://img.shields.io/github/followers/saketh-04?label=Followers&style=for-the-badge&color=8B5CF6&labelColor=1e1e2e" alt="followers" />
+  <img src="https://img.shields.io/github/stars/saketh-04?label=Total%20Stars&style=for-the-badge&color=EC4899&labelColor=1e1e2e" alt="stars" />
+  
+</div>
 
-    const interval = setInterval(() => {
-      setParticles(prev => prev.map(p => ({
-        ...p,
-        x: (p.x + p.speedX + 100) % 100,
-        y: (p.y + p.speedY + 100) % 100
-      })));
-    }, 50);
+<br/>
 
-    return () => clearInterval(interval);
-  }, []);
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-  // Snake game logic
-  useEffect(() => {
-    if (!gameActive) return;
+<br/>
 
-    const handleKeyPress = (e) => {
-      const keyMap = {
-        ArrowUp: [0, -1],
-        ArrowDown: [0, 1],
-        ArrowLeft: [-1, 0],
-        ArrowRight: [1, 0]
-      };
-      if (keyMap[e.key]) {
-        const newDir = keyMap[e.key];
-        if (newDir[0] !== -direction[0] || newDir[1] !== -direction[1]) {
-          setDirection(newDir);
-        }
-      }
-    };
+## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width="30"/> About Me
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [direction, gameActive]);
-
-  useEffect(() => {
-    if (!gameActive) return;
-
-    const gameLoop = setInterval(() => {
-      setSnake(prev => {
-        const head = prev[0];
-        const newHead = [head[0] + direction[0], head[1] + direction[1]];
-
-        // Check wall collision
-        if (newHead[0] < 0 || newHead[0] >= 20 || newHead[1] < 0 || newHead[1] >= 20) {
-          setGameActive(false);
-          return prev;
-        }
-
-        // Check self collision
-        if (prev.some(segment => segment[0] === newHead[0] && segment[1] === newHead[1])) {
-          setGameActive(false);
-          return prev;
-        }
-
-        const newSnake = [newHead, ...prev];
-
-        // Check food collision
-        if (newHead[0] === food[0] && newHead[1] === food[1]) {
-          setScore(s => s + 10);
-          setFood([Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)]);
-        } else {
-          newSnake.pop();
-        }
-
-        return newSnake;
-      });
-    }, 150);
-
-    return () => clearInterval(gameLoop);
-  }, [direction, food, gameActive]);
-
-  const startGame = () => {
-    setSnake([[10, 10]]);
-    setFood([15, 15]);
-    setDirection([0, 1]);
-    setScore(0);
-    setGameActive(true);
-  };
-
-  const stats = [
-    { icon: Star, label: 'Total Stars', value: '150+', color: 'from-yellow-400 to-orange-500' },
-    { icon: GitBranch, label: 'Projects', value: '25+', color: 'from-green-400 to-emerald-500' },
-    { icon: Users, label: 'Followers', value: '500+', color: 'from-blue-400 to-cyan-500' },
-    { icon: Award, label: 'Contributions', value: '1.2K+', color: 'from-purple-400 to-pink-500' }
-  ];
-
-  const techStack = [
-    { name: 'React', color: 'bg-cyan-500', level: 95 },
-    { name: 'Node.js', color: 'bg-green-500', level: 90 },
-    { name: 'TypeScript', color: 'bg-blue-500', level: 88 },
-    { name: 'AWS', color: 'bg-orange-500', level: 85 },
-    { name: 'Python', color: 'bg-yellow-500', level: 82 },
-    { name: 'Docker', color: 'bg-sky-500', level: 80 }
-  ];
-
-  const projects = [
-    {
-      title: '🌌 AstroAtlas',
-      desc: '3D Space Exploration with NASA APIs',
-      tech: ['React', 'Three.js', 'WebGL'],
-      gradient: 'from-indigo-500 to-purple-600'
+```typescript
+const saketh = {
+    pronouns: "he" | "him",
+    location: "Hyderabad, India 🇮🇳",
+    education: "Computer Science Engineering",
+    currentlyWorking: ["AstroAtlas 🌌", "Disaster AI 🚨", "MediSphere 🏥"],
+    learning: ["AWS Solutions Architecture", "Kubernetes Orchestration", "LLM Integration"],
+    funFact: "I debug with console.log() and I'm not ashamed 😎",
+    askMeAbout: ["Web Dev", "Cloud", "System Design", "Open Source"],
+    techStack: {
+        frontend: {
+            js: ["React", "Next.js", "TypeScript", "Redux"],
+            css: ["Tailwind", "Styled-Components", "CSS3"],
+            misc: ["Three.js", "Framer Motion"]
+        },
+        backend: {
+            js: ["Node.js", "Express", "Nest.js"],
+            python: ["FastAPI", "Django"],
+            misc: ["GraphQL", "REST APIs", "WebSockets"]
+        },
+        database: ["MongoDB", "PostgreSQL", "Redis", "Firebase"],
+        devops: ["Docker", "Kubernetes", "AWS", "GitHub Actions", "Vercel"],
+        tools: ["Git", "Postman", "Figma", "VS Code", "Linux"]
     },
-    {
-      title: '🚨 Disaster AI',
-      desc: 'ML-Powered Emergency Response',
-      tech: ['FastAPI', 'TensorFlow', 'MongoDB'],
-      gradient: 'from-red-500 to-pink-600'
-    },
-    {
-      title: '🏥 MediSphere',
-      desc: 'Smart Hospital Management Suite',
-      tech: ['Next.js', 'OpenAI', 'AWS'],
-      gradient: 'from-emerald-500 to-teal-600'
-    }
-  ];
-
-  return (
-    <div 
-      className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white overflow-hidden relative"
-      onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
-    >
-      {/* Animated Background Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {particles.map(p => (
-          <div
-            key={p.id}
-            className="absolute rounded-full bg-purple-400 opacity-20"
-            style={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              width: `${p.size}px`,
-              height: `${p.size}px`,
-              filter: 'blur(1px)'
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Cursor Glow Effect */}
-      <div
-        className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-300 ease-out"
-        style={{
-          left: mousePos.x - 192,
-          top: mousePos.y - 192,
-          background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)',
-          filter: 'blur(40px)'
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-        {/* Header with Animation */}
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block mb-6">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mx-auto flex items-center justify-center text-6xl font-bold shadow-2xl animate-pulse-slow">
-              SP
-            </div>
-          </div>
-          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
-            SAKETH PAGGILLA
-          </h1>
-          <div className="flex items-center justify-center gap-4 text-xl text-purple-300 mb-6">
-            <Code className="w-6 h-6 animate-bounce" />
-            <span>Full Stack Developer</span>
-            <Cloud className="w-6 h-6 animate-bounce delay-100" />
-            <span>Cloud Architect</span>
-            <Rocket className="w-6 h-6 animate-bounce delay-200" />
-            <span>AI Innovator</span>
-          </div>
-          <div className="flex justify-center gap-4">
-            <a href="https://github.com/saketh-04" className="p-3 bg-purple-600 rounded-full hover:bg-purple-500 transition-all hover:scale-110 transform">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="https://www.linkedin.com/in/paggilla-saketh-95a84833b/" className="p-3 bg-blue-600 rounded-full hover:bg-blue-500 transition-all hover:scale-110 transform">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="mailto:sakethpaggila666@gmail.com" className="p-3 bg-pink-600 rounded-full hover:bg-pink-500 transition-all hover:scale-110 transform">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
-
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all hover:scale-105 transform hover:shadow-2xl hover:shadow-purple-500/20"
-              style={{ animationDelay: `${idx * 100}ms` }}
-            >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4`}>
-                <stat.icon className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-3xl font-bold mb-2">{stat.value}</div>
-              <div className="text-purple-300 text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Snake Game Section */}
-        <div className="mb-16 bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-purple-500/20">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold flex items-center gap-3">
-              <Terminal className="w-8 h-8 text-green-400" />
-              🐍 Play Snake Game
-            </h2>
-            <div className="text-2xl font-bold text-yellow-400">Score: {score}</div>
-          </div>
-          <div className="flex flex-col md:flex-row gap-8">
-            <div
-              ref={gameRef}
-              className="bg-black/50 rounded-xl border-2 border-green-500/50 overflow-hidden"
-              style={{ width: '400px', height: '400px' }}
-            >
-              {!gameActive ? (
-                <div className="w-full h-full flex items-center justify-center">
-                  <button
-                    onClick={startGame}
-                    className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl font-bold text-xl hover:scale-110 transform transition-all shadow-lg hover:shadow-green-500/50"
-                  >
-                    Start Game
-                  </button>
-                </div>
-              ) : (
-                <div className="relative w-full h-full">
-                  {snake.map((segment, idx) => (
-                    <div
-                      key={idx}
-                      className="absolute bg-gradient-to-br from-green-400 to-emerald-500 rounded-sm"
-                      style={{
-                        left: `${segment[1] * 5}%`,
-                        top: `${segment[0] * 5}%`,
-                        width: '5%',
-                        height: '5%'
-                      }}
-                    />
-                  ))}
-                  <div
-                    className="absolute bg-red-500 rounded-full animate-pulse"
-                    style={{
-                      left: `${food[1] * 5}%`,
-                      top: `${food[0] * 5}%`,
-                      width: '5%',
-                      height: '5%'
-                    }}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="flex-1 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold mb-4 text-green-400">How to Play:</h3>
-              <ul className="space-y-3 text-lg text-purple-200">
-                <li className="flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-yellow-400" />
-                  Use arrow keys to control the snake
-                </li>
-                <li className="flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-yellow-400" />
-                  Eat the red food to grow longer
-                </li>
-                <li className="flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-yellow-400" />
-                  Don't hit the walls or yourself!
-                </li>
-                <li className="flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-yellow-400" />
-                  Try to beat your high score!
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Tech Stack with Animated Bars */}
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">💻 Tech Stack Mastery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {techStack.map((tech, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all">
-                <div className="flex justify-between mb-3">
-                  <span className="font-bold text-lg">{tech.name}</span>
-                  <span className="text-purple-300">{tech.level}%</span>
-                </div>
-                <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
-                  <div
-                    className={`h-full ${tech.color} rounded-full transition-all duration-1000 ease-out animate-width`}
-                    style={{ width: `${tech.level}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Featured Projects */}
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">🚀 Featured Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map((project, idx) => (
-              <div
-                key={idx}
-                className="group bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all hover:scale-105 transform hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
-              >
-                <div className={`w-full h-40 rounded-xl bg-gradient-to-br ${project.gradient} mb-4 flex items-center justify-center text-5xl group-hover:scale-110 transition-transform`}>
-                  {project.title.split(' ')[0]}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-purple-300 mb-4">{project.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t, i) => (
-                    <span key={i} className="px-3 py-1 bg-purple-600/30 rounded-full text-sm">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* About Me - Animated Text */}
-        <div className="text-center bg-white/5 backdrop-blur-lg rounded-3xl p-12 border border-purple-500/20">
-          <h2 className="text-4xl font-bold mb-8">👨‍💻 About Me</h2>
-          <p className="text-xl leading-relaxed text-purple-200 max-w-4xl mx-auto mb-6">
-            I'm a passionate <span className="text-cyan-400 font-bold">Full Stack Developer</span> and{' '}
-            <span className="text-pink-400 font-bold">Cloud Architect</span> from Hyderabad, India 🇮🇳. 
-            I love building <span className="text-yellow-400 font-bold">scalable systems</span> and creating{' '}
-            <span className="text-green-400 font-bold">beautiful user experiences</span>. Currently working on AI-powered 
-            applications and contributing to open source. When I'm not coding, you'll find me exploring new technologies 
-            or debugging with console.log() (and I'm not ashamed! 😎)
-          </p>
-          <div className="inline-block px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-bold text-lg hover:scale-110 transform transition-all shadow-lg hover:shadow-purple-500/50 cursor-pointer">
-            Let's Build Something Amazing! 🚀
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-        @keyframes pulse-slow {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 3s ease-in-out infinite;
-        }
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-      `}</style>
-    </div>
-  );
+    architecture: ["Microservices", "Event-Driven", "Serverless", "PWAs"],
+    reachMe: "sakethpaggila666@gmail.com"
 };
+```
 
-export default GitHubProfile;
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"> Tech Stack & Tools
+
+<div align="center">
+
+### 💻 Frontend Development
+<p>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+</p>
+
+### ⚙️ Backend Development
+<p>
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white" />
+</p>
+
+### 🗄️ Databases
+<p>
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
+</p>
+
+### ☁️ Cloud & DevOps
+<p>
+  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
+</p>
+
+### 🛠️ Tools & Platforms
+<p>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" />
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" />
+</p>
+
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 🚀 Featured Projects
+
+<div align="center">
+
+<table>
+<tr>
+<td width="50%">
+
+### 🌌 AstroAtlas
+**Interactive 3D Space Exploration Platform**
+
+Immersive astronomy application featuring real-time 3D visualization of celestial bodies, NASA API integration, and educational content about our universe.
+
+**Tech:** React • Three.js • NASA APIs • WebGL • Tailwind
+
+<div align="center">
+  <a href="https://astro-atlas-explorers-main-2.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🔗_Live_Demo-6366F1?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/saketh-04/astro-atlas-explorers-main-2" target="_blank">
+    <img src="https://img.shields.io/badge/📂_Source_Code-181717?style=for-the-badge&logo=github" />
+  </a>
+</div>
+
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=saketh-04&repo=astro-atlas-explorers-main-2&theme=radical&hide_border=true&bg_color=0D1117" />
+
+</td>
+<td width="50%">
+
+### 🚨 Disaster Management System
+**AI-Powered Emergency Response Platform**
+
+Intelligent disaster prediction system using machine learning to forecast natural disasters and coordinate real-time emergency responses with live alerts.
+
+**Tech:** FastAPI • TensorFlow • Node.js • MongoDB • WebSocket
+
+<div align="center">
+  <a href="https://disaster-mangement.onrender.com" target="_blank">
+    <img src="https://img.shields.io/badge/🔗_Live_Demo-10B981?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/saketh-04/Disaster-Mangement" target="_blank">
+    <img src="https://img.shields.io/badge/📂_Source_Code-181717?style=for-the-badge&logo=github" />
+  </a>
+</div>
+
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=saketh-04&repo=Disaster-Mangement&theme=radical&hide_border=true&bg_color=0D1117" />
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### 🏥 MediSphere
+**Smart Hospital Management Suite**
+
+Comprehensive healthcare platform with AI chatbot for patient queries, appointment scheduling, and real-time analytics dashboards for hospital administration.
+
+**Tech:** Next.js • OpenAI • MongoDB • AWS • Socket.io
+
+<div align="center">
+  <a href="https://medi-sphere-smart-hospitalization-n.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🔗_Live_Demo-EC4899?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/saketh-04/MediSphere-Smart-Hospitalization" target="_blank">
+    <img src="https://img.shields.io/badge/📂_Source_Code-181717?style=for-the-badge&logo=github" />
+  </a>
+</div>
+
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=saketh-04&repo=MediSphere-Smart-Hospitalization&theme=radical&hide_border=true&bg_color=0D1117" />
+
+</td>
+<td width="50%">
+
+### 💡 More Coming Soon...
+**Currently in Development**
+
+Working on several exciting projects including a real-time collaboration platform, AI-powered code reviewer, and blockchain-based authentication system.
+
+**Stay Tuned!** 🎯
+
+<div align="center">
+  <img src="https://img.shields.io/badge/⭐_Star_My_Repos-FCD34D?style=for-the-badge" />
+</div>
+
+<br/>
+
+<img src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif" width="200"/>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 📊 GitHub Analytics
+
+<div align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=saketh-04&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&text_color=E1E8ED"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saketh-04&layout=compact&langs_count=8&theme=radical&hide_border=true&bg_color=0D1117&title_color=F85D7F&text_color=E1E8ED"/>
+</div>
+
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=saketh-04&theme=radical&hide_border=true&background=0D1117&stroke=F85D7F&ring=F8D866&fire=F85D7F&currStreakLabel=E1E8ED" />
+</div>
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=saketh-04&custom_title=Contribution%20Graph&bg_color=0D1117&color=F85D7F&line=F8D866&point=FFFFFF&area_color=F85D7F&title_color=FFFFFF&area=true&hide_border=true" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=saketh-04&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7" />
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 🐍 Contribution Snake
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg">
+  </picture>
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<br/>
+
+## 💬 Connect With Me
+
+<div align="center">
+  
+  <a href="https://www.linkedin.com/in/paggilla-saketh-95a84833b/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="mailto:sakethpaggila666@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+  <a href="https://github.com/saketh-04">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://twitter.com/">
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
+  </a>
+  
+</div>
+
+<br/>
+
+<div align="center">
+  
+  ### 💭 Random Dev Quote
+  
+  ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+  
+</div>
+
+<br/>
+
+<div align="center">
+  
+  ### 🎯 Current Goals for 2025
+  
+  - 🏆 Contribute to 10+ open source projects
+  - 📚 Master AWS Solutions Architecture
+  - 🚀 Build and launch 3 production-ready SaaS products
+  - 🎓 Mentor aspiring developers
+  - 📝 Write technical blog posts
+  
+</div>
+
+<br/>
+
+<div align="center">
+  
+  **"First, solve the problem. Then, write the code."** – John Johnson
+  
+  <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="60"> <em><b>I love connecting with people</b> so if you want to say <b>hi, I'll be happy to meet you!</b> 😊</em>
+  
+</div>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,16,20,24&height=120&section=footer" width="100%"/>
