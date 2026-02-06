@@ -182,20 +182,36 @@ Currently architecting several innovative solutions including a collaborative re
 
 <div align="center">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=saketh-04&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&text_color=E1E8ED&include_all_commits=true&count_private=true" alt="GitHub Stats"/>
-
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saketh-04&layout=compact&theme=radical&hide_border=true&bg_color=0D1117&title_color=F85D7F&text_color=E1E8ED&hide=html,css&langs_count=8" alt="Top Languages"/>
+<a href="https://github.com/saketh-04">
+  <img height="180em" src="https://github-readme-streak-stats-eight.vercel.app?user=saketh-04&theme=radical&hide_border=true&background=0D1117&stroke=F85D7F&ring=F8D866&fire=F85D7F&currStreakLabel=E1E8ED" alt="GitHub Streak Stats"/>
+</a>
 
 </div>
 
 <br/>
 
 <div align="center">
-  
-<a href="https://git.io/streak-stats">
-  <img src="https://streak-stats.demolab.com?user=saketh-04&theme=radical&hide_border=true&background=0D1117&stroke=F85D7F&ring=F8D866&fire=F85D7F&currStreakLabel=E1E8ED&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub Streak"/>
-</a>
 
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=saketh-04&theme=radical" alt="Stats Card"/>
+
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=saketh-04&theme=radical&utcOffset=5.5" alt="Productive Time"/>
+
+</div>
+
+<br/>
+
+<div align="center">
+
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=saketh-04&theme=radical" alt="Repos per Language"/>
+
+<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=saketh-04&theme=radical" alt="Most Used Languages"/>
+
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=saketh-04&theme=radical" alt="Profile Details"/>
 </div>
 
 <br/>
