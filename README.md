@@ -211,7 +211,7 @@ Currently architecting several innovative solutions including a collaborative re
 <br/>
 
 <div align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=saketh-04&theme=radical" alt="Profile Details"/>
+  <img src="https://github-trophies.vercel.app/?username=saketh-04&theme=radical&no-frame=true&no-bg=true&margin-w=4&row=1&column=7" alt="GitHub Trophies"/>
 </div>
 
 <br/>
